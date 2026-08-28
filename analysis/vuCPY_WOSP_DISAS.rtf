@@ -1,0 +1,45 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2868
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Dump of assembler code for function vuln_copy:\
+   0x00000000800002c2 <+0>:     addi    sp,sp,-96\
+   0x00000000800002c4 <+2>:     sd      ra,88(sp)\
+   0x00000000800002c6 <+4>:     sd      s0,80(sp)\
+   0x00000000800002c8 <+6>:     addi    s0,sp,96\
+   0x00000000800002ca <+8>:     sd      a0,-88(s0)\
+   0x00000000800002ce <+12>:    mv      a5,a1\
+   0x00000000800002d0 <+14>:    sw      a5,-92(s0)\
+   0x00000000800002d4 <+18>:    auipc   a0,0x0\
+   0x00000000800002d8 <+22>:    addi    a0,a0,404 # 0x80000468\
+   0x00000000800002dc <+26>:    jal     0x800000de <uart_puts>\
+   0x00000000800002e0 <+30>:    addi    a5,s0,-80\
+   0x00000000800002e4 <+34>:    mv      a0,a5\
+   0x00000000800002e6 <+36>:    jal     0x80000118 <print_hex64>\
+   0x00000000800002ea <+40>:    auipc   a0,0x0\
+   0x00000000800002ee <+44>:    addi    a0,a0,406 # 0x80000480\
+   0x00000000800002f2 <+48>:    jal     0x800000de <uart_puts>\
+   0x00000000800002f6 <+52>:    lwu     a4,-92(s0)\
+   0x00000000800002fa <+56>:    addi    a5,s0,-80\
+   0x00000000800002fe <+60>:    mv      a2,a4\
+   0x0000000080000300 <+62>:    ld      a1,-88(s0)\
+   0x0000000080000304 <+66>:    mv      a0,a5\
+   0x0000000080000306 <+68>:    jal     0x80000238 <memcpy_unsafe>\
+   0x000000008000030a <+72>:    auipc   a0,0x0\
+   0x000000008000030e <+76>:    addi    a0,a0,382 # 0x80000488\
+   0x0000000080000312 <+80>:    jal     0x800000de <uart_puts>\
+   0x0000000080000316 <+84>:    lbu     a5,-80(s0)\
+   0x000000008000031a <+88>:    zext.b  a5,a5\
+   0x000000008000031e <+92>:    mv      a0,a5\
+   0x0000000080000320 <+94>:    jal     0x8000002a <uart_putc>\
+   0x0000000080000324 <+98>:    auipc   a0,0x0\
+   0x0000000080000328 <+102>:   addi    a0,a0,348 # 0x80000480\
+   0x000000008000032c <+106>:   jal     0x800000de <uart_puts>\
+   0x0000000080000330 <+110>:   nop\
+   0x0000000080000332 <+112>:   ld      ra,88(sp)\
+   0x0000000080000334 <+114>:   ld      s0,80(sp)\
+   0x0000000080000336 <+116>:   addi    sp,sp,96\
+   0x0000000080000338 <+118>:   ret}

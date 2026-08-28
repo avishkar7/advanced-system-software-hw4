@@ -1,0 +1,146 @@
+[akawadga@bondi ~/homework4]$ make qemu-gdb-input GDB_PORT=9116
+riscv64-unknown-elf-gcc -O0 -g -Wall -Wextra -ffreestanding -nostdlib -nostartfiles -fno-omit-frame-pointer -mcmodel=medany -march=rv64imac -mabi=lp64 src/start.o src/uart.o src/util.o src/vuln.o -T linker.ld -nostdlib -Wl,--no-warn-rwx-segments -o program.elf
+riscv64-unknown-elf-objcopy program.elf -O binary program.img
+qemu-system-riscv64 -M virt -bios none -serial stdio -display none -kernel program.img -S -gdb tcp::9116 < payload.bin
+/bin/sh: payload.bin: No such file or directory
+make: *** [Makefile:60: qemu-gdb-input] Error 1
+[akawadga@bondi ~/homework4]$ python3 my_script.py>payload.bin
+[akawadga@bondi ~/homework4]$ make run < payload.bin
+riscv64-unknown-elf-gcc -O0 -g -Wall -Wextra -ffreestanding -nostdlib -nostartfiles -fno-omit-frame-pointer -mcmodel=medany -march=rv64imac -mabi=lp64 src/start.o src/uart.o src/util.o src/vuln.o -T linker.ld -nostdlib -Wl,--no-warn-rwx-segments -o program.elf
+riscv64-unknown-elf-objcopy program.elf -O binary program.img
+qemu-system-riscv64 -M virt -bios none -serial stdio -display none -kernel program.img
+
+Input format: [4-byte little-endian length L] [L bytes payload]
+Send payload.bin via stdin redirection:  make run < payload.bin
+
+[main] calling vuln_copy(len=0x000000000000004b)
+[vuln_copy] buf @ 0x0000000080004650
+[vuln_copy] done, first byte = G
+^Cqemu-system-riscv64: terminating on signal 2
+
+[akawadga@bondi ~/homework4]$ python3 exploit.py > payload.bin
+[akawadga@bondi ~/homework4]$ make run < payload.bin
+riscv64-unknown-elf-gcc -O0 -g -Wall -Wextra -ffreestanding -nostdlib -nostartfiles -fno-omit-frame-pointer -mcmodel=medany -march=rv64imac -mabi=lp64 src/start.o src/uart.o src/util.o src/vuln.o -T linker.ld -nostdlib -Wl,--no-warn-rwx-segments -o program.elf
+riscv64-unknown-elf-objcopy program.elf -O binary program.img
+qemu-system-riscv64 -M virt -bios none -serial stdio -display none -kernel program.img
+
+Input format: [4-byte little-endian length L] [L bytes payload]
+Send payload.bin via stdin redirection:  make run < payload.bin
+
+[main] calling vuln_copy(len=0x000000000000004c)
+[vuln_copy] buf @ 0x0000000080004650
+[vuln_copy] done, first byte = A
+^Cqemu-system-riscv64: terminating on signal 2
+
+[akawadga@bondi ~/homework4]$ make qemu-gdb-input GDB_PORT=9116
+qemu-system-riscv64 -M virt -bios none -serial stdio -display none -kernel program.img -S -gdb tcp::9116 < payload.bin
+
+Input format: [4-byte little-endian length L] [L bytes payload]
+Send payload.bin via stdin redirection:  make run < payload.bin
+
+[main] calling vuln_copy(len=0x000000000000004c)
+[vuln_copy] buf @ 0x0000000080004650
+[vuln_copy] done, first byte = A
+^Cqemu-system-riscv64: terminating on signal 2
+
+[akawadga@bondi ~/homework4]$ python3 exploit.py > payload.bin
+[akawadga@bondi ~/homework4]$ make run < payload.bin
+riscv64-unknown-elf-gcc -O0 -g -Wall -Wextra -ffreestanding -nostdlib -nostartfiles -fno-omit-frame-pointer -mcmodel=medany -march=rv64imac -mabi=lp64 src/start.o src/uart.o src/util.o src/vuln.o -T linker.ld -nostdlib -Wl,--no-warn-rwx-segments -o program.elf
+riscv64-unknown-elf-objcopy program.elf -O binary program.img
+qemu-system-riscv64 -M virt -bios none -serial stdio -display none -kernel program.img
+
+Input format: [4-byte little-endian length L] [L bytes payload]
+Send payload.bin via stdin redirection:  make run < payload.bin
+
+[main] calling vuln_copy(len=0x0000000000000053)
+[vuln_copy] buf @ 0x0000000080004650
+[vuln_copy] done, first byte = A
+^Cqemu-system-riscv64: terminating on signal 2
+
+[akawadga@bondi ~/homework4]$ make qemu-gdb-input GDB_PORT=9116
+qemu-system-riscv64 -M virt -bios none -serial stdio -display none -kernel program.img -S -gdb tcp::9116 < payload.bin
+
+Input format: [4-byte little-endian length L] [L bytes payload]
+Send payload.bin via stdin redirection:  make run < payload.bin
+
+[main] calling vuln_copy(len=0x0000000000000053)
+[vuln_copy] buf @ 0x0000000080004650
+[vuln_copy] done, first byte = A
+^Cqemu-system-riscv64: terminating on signal 2
+
+[akawadga@bondi ~/homework4]$ make qemu-gdb-input GDB_PORT=9116
+qemu-system-riscv64 -M virt -bios none -serial stdio -display none -kernel program.img -S -gdb tcp::9116 < payload.bin
+
+Input format: [4-byte little-endian length L] [L bytes payload]
+Send payload.bin via stdin redirection:  make run < payload.bin
+
+[main] calling vuln_copy(len=0x0000000000000053)
+[vuln_copy] buf @ 0x0000000080004650
+[vuln_copy] done, first byte = A
+qemu-system-riscv64: terminating on signal 15 from pid 317943 (-bin/tcsh)
+[akawadga@bondi ~/homework4]$ python3 exploit.py > payload.bin
+[akawadga@bondi ~/homework4]$ python3 exploit.py > payload.bin
+[akawadga@bondi ~/homework4]$ make run < payload.bin
+riscv64-unknown-elf-gcc -O0 -g -Wall -Wextra -ffreestanding -nostdlib -nostartfiles -fno-omit-frame-pointer -mcmodel=medany -march=rv64imac -mabi=lp64 src/start.o src/uart.o src/util.o src/vuln.o -T linker.ld -nostdlib -Wl,--no-warn-rwx-segments -o program.elf
+riscv64-unknown-elf-objcopy program.elf -O binary program.img
+qemu-system-riscv64 -M virt -bios none -serial stdio -display none -kernel program.img
+
+Input format: [4-byte little-endian length L] [L bytes payload]
+Send payload.bin via stdin redirection:  make run < payload.bin
+
+[main] calling vuln_copy(len=0x0000000000000038) ======> when I set OFFSET_TO_RA to 48.
+[vuln_copy] buf @ 0x0000000080004650
+[vuln_copy] done, first byte = A
+[main] returned normally (exploit failed)
+^Cqemu-system-riscv64: terminating on signal 2
+
+[akawadga@bondi ~/homework4]$ python3 exploit.py > payload.bin
+[akawadga@bondi ~/homework4]$ make run < payload.bin
+riscv64-unknown-elf-gcc -O0 -g -Wall -Wextra -ffreestanding -nostdlib -nostartfiles -fno-omit-frame-pointer -mcmodel=medany -march=rv64imac -mabi=lp64 src/start.o src/uart.o src/util.o src/vuln.o -T linker.ld -nostdlib -Wl,--no-warn-rwx-segments -o program.elf
+riscv64-unknown-elf-objcopy program.elf -O binary program.img
+qemu-system-riscv64 -M virt -bios none -serial stdio -display none -kernel program.img
+
+Input format: [4-byte little-endian length L] [L bytes payload]
+Send payload.bin via stdin redirection:  make run < payload.bin
+
+[main] calling vuln_copy(len=0x0000000000000042) ======> when I set OFFSET_TO_RA to 58.
+[vuln_copy] buf @ 0x0000000080004650
+[vuln_copy] done, first byte = A
+[main] returned normally (exploit failed)
+^Cqemu-system-riscv64: terminating on signal 2
+
+[akawadga@bondi ~/homework4]$ python3 exploit.py > payload.bin
+[akawadga@bondi ~/homework4]$ make run < payload.bin
+riscv64-unknown-elf-gcc -O0 -g -Wall -Wextra -ffreestanding -nostdlib -nostartfiles -fno-omit-frame-pointer -mcmodel=medany -march=rv64imac -mabi=lp64 src/start.o src/uart.o src/util.o src/vuln.o -T linker.ld -nostdlib -Wl,--no-warn-rwx-segments -o program.elf
+riscv64-unknown-elf-objcopy program.elf -O binary program.img
+qemu-system-riscv64 -M virt -bios none -serial stdio -display none -kernel program.img
+
+Input format: [4-byte little-endian length L] [L bytes payload]
+Send payload.bin via stdin redirection:  make run < payload.bin
+
+[main] calling vuln_copy(len=0x0000000000000052) ======> when I set OFFSET_TO_RA to 74.
+[vuln_copy] buf @ 0x0000000080004650
+[vuln_copy] done, first byte = A
+^Cqemu-system-riscv64: terminating on signal 2
+
+[akawadga@bondi ~/homework4]$ python3 exploit.py > payload.bin
+[akawadga@bondi ~/homework4]$ make run < payload.bin
+riscv64-unknown-elf-gcc -O0 -g -Wall -Wextra -ffreestanding -nostdlib -nostartfiles -fno-omit-frame-pointer -mcmodel=medany -march=rv64imac -mabi=lp64 src/start.o src/uart.o src/util.o src/vuln.o -T linker.ld -nostdlib -Wl,--no-warn-rwx-segments -o program.elf
+riscv64-unknown-elf-objcopy program.elf -O binary program.img
+qemu-system-riscv64 -M virt -bios none -serial stdio -display none -kernel program.img
+
+Input format: [4-byte little-endian length L] [L bytes payload]
+Send payload.bin via stdin redirection:  make run < payload.bin
+
+[main] calling vuln_copy(len=0x0000000000000050) ======> when I set OFFSET_TO_RA to 72.
+[vuln_copy] buf @ 0x0000000080004650
+[vuln_copy] done, first byte = A
+
+*** WIN(): control flow hijacked! ***
+If this were a real system, attacker code would run now.
+
+
+
+
+
+0x000000008000029e

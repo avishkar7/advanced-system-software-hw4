@@ -1,0 +1,28 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+__MACOSX/
+.nfs*
+
+# Archives — commit the extracted source, not the zip
+*.zip
+*.tar.gz
+
+# Bare-metal RISC-V / xv6 build artifacts
+*.o
+*.d
+*.asm
+*.sym
+*.img
+*.elf
+*.out
+build/
+vectors.S
+bootblock
+entryother
+initcode
+kernelmemfs
+mkfs
+kernel/kernel
+user/usys.S
+.gdbinit

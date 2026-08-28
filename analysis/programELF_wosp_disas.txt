@@ -1,0 +1,38 @@
+program.elf:     file format elf64-littleriscv
+
+
+Disassembly of section .text:
+
+0000000080000000 <_start>:
+    80000000:   00004117                auipc   sp,0x4
+    80000004:   6c010113                addi    sp,sp,1728 # 800046c0 <_stack_top>
+    80000008:   332000ef                jal     8000033a <main>
+    8000000c:   a001                    j       8000000c <_start+0xc>
+
+000000008000000e <uart_reg>:
+    8000000e:   1101                    addi    sp,sp,-32
+    80000010:   ec22                    sd      s0,24(sp)
+    80000012:   1000                    addi    s0,sp,32
+    80000014:   fea43423                sd      a0,-24(s0)
+    80000018:   fe843703                ld      a4,-24(s0)
+    8000001c:   100007b7                lui     a5,0x10000
+    80000020:   97ba                    add     a5,a5,a4
+    80000022:   853e                    mv      a0,a5
+    80000024:   6462                    ld      s0,24(sp)
+    80000026:   6105                    addi    sp,sp,32
+    80000028:   8082                    ret
+
+000000008000002a <uart_putc>:
+    8000002a:   1101                    addi    sp,sp,-32
+    8000002c:   ec06                    sd      ra,24(sp)
+    8000002e:   e822                    sd      s0,16(sp)
+    80000030:   1000                    addi    s0,sp,32
+    80000032:   87aa                    mv      a5,a0
+    80000034:   fef407a3                sb      a5,-17(s0)
+    80000038:   0001                    nop
+    8000003a:   4515                    li      a0,5
+    8000003c:   fd3ff0ef                jal     8000000e <uart_reg>
+    80000040:   87aa                    mv      a5,a0
+    80000042:   0007c783                lbu     a5,0(a5) # 10000000 <_start-0x70000000>
+    80000046:   0ff7f793                zext.b  a5,a5
+    8000004a:   2781                    sext.w  a5,a5
